@@ -27,7 +27,8 @@ export default class MyDocument extends Document {
       <html>
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+
       <meta name="description" content="Description" />
 
       <link rel="manifest" href="/manifest.json" />
@@ -46,6 +47,8 @@ export default class MyDocument extends Document {
       <body className="custom_class">
         <Main />
         <NextScript />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </body>
       </html>
     )

@@ -4,8 +4,8 @@ const withOffline = require('next-offline')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const nextConfig = {
-  webpack: (config, {isServer}) => {
-    if (isServer) return config
+  webpack: (config, {dev, isServer}) => {
+    if (isServer || dev) return config
 
     config.plugins.push(
       new WebpackPwaManifest({
