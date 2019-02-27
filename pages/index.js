@@ -13,14 +13,6 @@ const Title = styled.h1`
 function Home() {
   useEffect(() => {
     document.title = `You clicked times`
-
-    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-      console.log('1238127398712')
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/_next/serviceworker.js')
-      })
-    }
-
   })
 
   return <div>

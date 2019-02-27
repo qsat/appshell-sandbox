@@ -13,13 +13,9 @@ app.prepare()
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true)
     const { pathname } = parsedUrl
-    const referer = req.headers.referer || ''
 
-    if (pathname.indexOf('/serviceworker.js') > -1) {
-      const filePath = join(__dirname, '.next/serviceworker.js')
-      app.serveStatic(req, res, filePath)
-    } else if (pathname.includes('manifest')) {
-      const filePath = join(__dirname, pathname.replace('_next', '.next'))
+    if (pathname.indexOf('/service-worker.js') > -1) {
+      const filePath = join(__dirname, '.next/service-worker.js')
       app.serveStatic(req, res, filePath)
     } else if (pathname === '/manifest.json') {
       const filePath = join(__dirname, '.next', pathname)

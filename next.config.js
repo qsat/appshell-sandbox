@@ -1,10 +1,9 @@
 const path = require('path')
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
-const WebpackPwaManifest = require('webpack-pwa-manifest')
 const withCSS = require('@zeit/next-css')
-const dist = __dirname
+const withOffline = require('next-offline')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
-module.exports = withCSS({
+const nextConfig = {
   webpack: (config, {isServer}) => {
     if (isServer) return config
 
@@ -21,24 +20,37 @@ module.exports = withCSS({
         description: 'A simple PWA.',
         icons: [
           {
-            src: path.resolve('assets/icon.png'),
+            src: '/static/icon.png',
             sizes: '512x512',
             type: 'image/png'
           }
         ]
       })
     )
-    config.plugins.push(
-      new WorkboxWebpackPlugin.GenerateSW({
-        swDest: dist + '/.next/serviceworker.js',
-        // globPatterns: ['.next/static/**/*.js'],
-        // globDirectory: '.',
-        // precacheManifestFilename: dist + '/.next/static/wb-manifest.[manifestHash].js',
-        clientsClaim: true,
-        skipWaiting: true,
-      })
-    )
 
     return config
-  }
-})
+  },
+
+  workboxOpts: {
+    swDest: 'static/service-worker.js',
+    runtimeCaching: [
+      {
+        urlPattern: /^https?.*/,
+        handler: 'networkFirst',
+        options: {
+          cacheName: 'https-calls',
+          networkTimeoutSeconds: 15,
+          expiration: {
+            maxEntries: 150,
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
+          },
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+        },
+      },
+    ],
+  },
+}
+
+module.exports = withCSS(withOffline(nextConfig))
