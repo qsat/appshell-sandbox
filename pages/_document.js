@@ -42,7 +42,14 @@ export default class MyDocument extends Document {
       <meta name="mobile-web-app-capable" content="yes" />
 
       <Head>
-        <style>{`body { margin: 0 } /* custom! */`}</style>
+        <style>{`
+          html, body {
+            margin: 0;
+            height: 100%;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+          }
+          #__next { height: 100%; }
+        `}</style>
       </Head>
       <body className="custom_class">
         <Main />
