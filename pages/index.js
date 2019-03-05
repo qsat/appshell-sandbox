@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { install } from '@material-ui/styles';
 import Link from 'next/link'
 import styled from 'styled-components'
 import InfiniteCalendar from 'react-infinite-calendar';
@@ -11,8 +10,6 @@ const Title = styled.h1`
   color: red;
   font-size: 50px;
 `
-
-install()
 
 function Home() {
   useEffect(() => {
