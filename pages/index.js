@@ -3,8 +3,6 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Layout from '../components/template/Layout'
 
-import 'react-infinite-calendar/styles.css';
-
 const Title = styled.div`
   grid-column: header;
   color: red;
