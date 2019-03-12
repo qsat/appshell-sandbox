@@ -12,11 +12,9 @@ const Content = styled.div`
 
 function Home() {
   return (
-    <Layout>
-      <Content>
-        <Loading />
-      </Content>
-    </Layout>
+    <Content>
+      <Loading />
+    </Content>
   )
 }
 

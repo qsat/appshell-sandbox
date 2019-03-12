@@ -25,23 +25,23 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html>
-      <meta charSet="utf-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-
-      <meta name="description" content="Description" />
-
-      <link rel="manifest" href="/manifest.json" />
-
-      <meta name="theme-color" content="#ff6600" />
-      <link rel="shortcut icon" href="/static/icon.png" />
-      <link rel="apple-touch-icon" href="/static/icon.png" />
-      <meta name="apple-mobile-web-app-title" content="Hacker News" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="mobile-web-app-capable" content="yes" />
-
       <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+
+        <meta name="description" content="Description" />
+
+        <link rel="manifest" href="/manifest.json" />
+
+        <meta name="theme-color" content="#ff6600" />
+        <link rel="shortcut icon" href="/static/icon.png" />
+        <link rel="apple-touch-icon" href="/static/icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Hacker News" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+
         <style>{`
           html, body {
             margin: 0;
