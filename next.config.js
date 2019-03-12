@@ -2,6 +2,7 @@ const path = require('path')
 const withCSS = require('@zeit/next-css')
 const withOffline = require('next-offline')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const nextConfig = {
   webpack: (config, {dev, isServer}) => {
@@ -20,19 +21,26 @@ const nextConfig = {
         description: 'A simple PWA.',
         icons: [
           {
-            src: '/static/icon.png',
+            src: 'static/icon.png',
             sizes: '512x512',
             type: 'image/png'
           }
         ]
-      })
+      }),
+      // new WorkboxPlugin.InjectManifest({
+      //   swSrc: './service-worker.js',
+      // }),
     )
 
     return config
   },
 
   workboxOpts: {
-    swDest: 'static/service-worker.js',
+    // swSrc: 'service-worker.js',
+    // generateSw: false,
+    // generateInDevMode: true,
+    swDest: 'service-worker.js',
+    // devSwSrc: 'service-worker.js',
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,

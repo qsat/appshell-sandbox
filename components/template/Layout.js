@@ -1,16 +1,21 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components'
 
+import FavoriteIcon from '../icons/Favorite'
+
 const Layout = styled.div`
   height: 100%;
   display: grid;
-  grid-template: "header" 40px
+  /* grid-template-areas: "header" 40px
                  "content" 1fr
                  "footer" 55px
-                 / 1fr;`
+                 / 1fr; */
+  grid-template-rows: 40px 1fr 55px;
+  grid-template-columns: 1fr;
+`
 
 const Footer = styled.div`
-  grid-column: footer;
+  grid-row: 3 / 4;
   border-top: 1px solid #efefef;
 `
 
@@ -53,16 +58,7 @@ const BottomNaviItem = styled.li`
   }
 `
 
-const Content = styled.div`
-  grid-column: content;
-`
-
 const Icon1 = styled.div`
-  flex-shrink: 0;
-  fill: currentColor;
-  font-size: 24px;
-  width: 1em;
-  height: 1em;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `
 
@@ -80,20 +76,18 @@ const Ripple = styled.span`
 
   @keyframes ripple {
     from {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
     }
     to {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(2);
     }
   }
 `
 
 const Icon = () => (
-  <Icon1>
-    <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg> 
-  </Icon1>
+  <Icon1><FavoriteIcon /></Icon1>
 )
 
 const NaviItem = ({ active, onClick, index, children }) => {
@@ -127,7 +121,7 @@ export default ({ children }) => {
         <BottomNavi>
           <NaviItem index={0} active={active === 0} onClick={setActive}>Recent</NaviItem>
           <NaviItem index={1} active={active === 1} onClick={setActive}>Favorite</NaviItem>
-          <NaviItem index={2} active={active === 2} onClick={setActive}>Recent</NaviItem>
+          <NaviItem index={2} active={active === 2} onClick={setActive}>Settings</NaviItem>
         </BottomNavi>
       </Footer>
     </Layout>
