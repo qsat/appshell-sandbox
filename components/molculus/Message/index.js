@@ -15,7 +15,7 @@ const colors = {
 const Content = styled.div`
   background: ${({ type }) => colors[type || 'normal']};
   border-radius: 4px;
-  margin: 5px 15px;
+  margin: 5px 0;
   padding: 10px;
   word-break: break-all;
 `

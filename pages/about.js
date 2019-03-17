@@ -7,13 +7,16 @@ import MessageInput from '../components/molculus/MessageInput'
 const Title = styled.h1`
   color: blue;
   font-size: 30px;
-  grid-row: 1 / 2;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   background: #eee;
-  height: 100%;
+  height: 40px;
+  width: 100%;
   margin: 0;
+  position: fixed;
+  z-index: 100;
+  top: 0;
 `
 
 const Content = styled.div`
@@ -33,7 +36,20 @@ const MessageList = styled.div`
   flex-glow: 0;
   flex-basis: auto;
   flex-direction: column-reverse;
+  padding: 5px 15px;
   position: absolute;
+`
+
+const MessageFrom = styled.div`
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: -3px;
+`
+
+const MessagePostedAt = styled.div`
+  color: #aaa;
+  font-size: 10px;
+  margin-top: -2px;
 `
 
 function About() {
@@ -43,10 +59,15 @@ function About() {
       <Content>
         <MessageContainer>
           <MessageList>
+            <MessagePostedAt>00:00</MessagePostedAt>
             <Message>aaaa</Message>
+            <MessageFrom>aaaaa</MessageFrom>
+
             <Message>aaaa</Message>
-            <Message align="right" type="primary">aaaa</Message>
+            <MessageFrom>aaaa</MessageFrom>
+
             <Message align="right" type="primary">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Message>
+            <Message align="right" type="primary">aaaa</Message>
             <Message>aaaa</Message>
             <Message>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Message>
             <Message>aaaa</Message>

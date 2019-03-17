@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import styled from 'styled-components'
 
 const Root = styled.div`
@@ -5,7 +6,8 @@ const Root = styled.div`
   border-top: 1px solid #ddd;
   height: 40px;
   padding-left: 8px;
-  position: relative;
+  position: sticky;
+  bottom: 0;
 `
 
 const Input = styled.textarea`
@@ -33,9 +35,15 @@ const SubmitButton = styled.span`
   right: 12px;
 `
 
-export default () => (
-  <Root>
-    <Input placeholder="メッセージを入力" />
-    <SubmitButton disabled>送信</SubmitButton>
-  </Root>
-)
+export default () => {
+  const handleFocus = useCallback((e) => {
+    const target = e.target
+    // setTimeout(() => target.scrollIntoView(false), 100)
+  }, [])
+  return (
+    <Root>
+      <Input placeholder="メッセージを入力" onFocus={handleFocus} onChange={handleFocus}/>
+      <SubmitButton disabled>送信</SubmitButton>
+    </Root>
+  )
+}

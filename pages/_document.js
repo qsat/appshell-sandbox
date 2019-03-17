@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no" />
 
         <meta name="description" content="Description" />
 
@@ -50,6 +50,13 @@ export default class MyDocument extends Document {
           }
           #__next { height: 100%; }
         `}</style>
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('touchmove', function(event) {
+            // event.preventDefault();
+          }, { passive: false });
+        `}}>
+        </script>
       </Head>
       <body className="custom_class">
         <Main />

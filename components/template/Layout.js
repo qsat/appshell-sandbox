@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import Router, { withRouter } from 'next/router'
 import styled from 'styled-components'
 
+import Ripple from '../../components/atoms/Ripple'
 import FavoriteIcon from '../icons/Favorite'
 
 const Layout = styled.div`
@@ -16,8 +17,12 @@ const Layout = styled.div`
 `
 
 const Footer = styled.div`
-  grid-row: 3 / 4;
+  // grid-row: 3 / 4;
   border-top: 1px solid #efefef;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 `
 
 const BottomNavi = styled.ul`
@@ -35,8 +40,8 @@ const BottomNaviItem = styled.li`
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 19px 3px 6px;
-  padding-top: ${({active}) => active ? '6px' : '19px'};
+  padding: 14px 3px 2px;
+  padding-top: ${({active}) => active ? '2px' : '14px'};
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,padding-top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   & > .button {
@@ -63,29 +68,6 @@ const Icon1 = styled.div`
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `
 
-const Ripple = styled.span`
-  animation: ${({ ripple }) => ripple ? 'ripple 0.75s ease-out' : 'none'};
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  pointer-events: none;
-  background: rgba(0,0,0,0.1);
-  transform: translate(-50%, -50%) scale(0);
-  top: ${({ ripple }) => ripple ? `${ripple[1]}` : '50%'};
-  left: ${({ ripple }) => ripple ? `${ripple[0]}` : '50%'};
-
-  @keyframes ripple {
-    from {
-      opacity: 0.9;
-      transform: translate(-50%, -50%) scale(0);
-    }
-    to {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2);
-    }
-  }
-`
 
 const Icon = () => (
   <Icon1><FavoriteIcon /></Icon1>
@@ -124,7 +106,7 @@ export default withRouter(({ children, router }) => {
         <BottomNavi>
           <NaviItem href="/" current={current} onClick={setCurrent}>Recent</NaviItem>
           <NaviItem href="/about" current={current} onClick={setCurrent}>Favorite</NaviItem>
-          <NaviItem href="/aaa" current={current} onClick={setCurrent}>Settings</NaviItem>
+          <NaviItem href="/rooms" current={current} onClick={setCurrent}>Settings</NaviItem>
         </BottomNavi>
       </Footer>
     </Layout>
