@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import Layout from '../components/template/Layout'
 import Loading from '../components/Loading'
 
 const Content = styled.div`

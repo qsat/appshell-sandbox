@@ -1,31 +1,12 @@
 import React, { useState, useCallback } from 'react';
-import Router, { withRouter } from 'next/router'
+import Router from 'next/router'
 import styled from 'styled-components'
 
-import Ripple from '../../components/atoms/Ripple'
-import FavoriteIcon from '../icons/Favorite'
+import Ripple from '../../atoms/Ripple'
+import FavoriteIcon from '../../icons/Favorite'
 
-const Layout = styled.div`
-  height: 100%;
-  display: grid;
-  /* grid-template-areas: "header" 40px
-                 "content" 1fr
-                 "footer" 55px
-                 / 1fr; */
-  grid-template-rows: 40px 1fr 55px;
-  grid-template-columns: 1fr;
-`
-
-const Footer = styled.div`
-  // grid-row: 3 / 4;
-  border-top: 1px solid #efefef;
-  box-sizing: border-box;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-`
-
-const BottomNavi = styled.ul`
+export const BottomNavi = styled.ul`
+  background: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -68,12 +49,11 @@ const Icon1 = styled.div`
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `
 
-
 const Icon = () => (
   <Icon1><FavoriteIcon /></Icon1>
 )
 
-const NaviItem = ({ href, current, onClick, children }) => {
+export const NaviItem = ({ href, current, children }) => {
   const [ripple, startRipple] = useState(null)
   const handleMouseDown = useCallback((e) => {
     const rect = e.target.getBoundingClientRect()
@@ -82,7 +62,6 @@ const NaviItem = ({ href, current, onClick, children }) => {
       `${((e.clientY - rect.y)/rect.height)* 100}%`,
     ])
     setTimeout(() => startRipple(null), 500)
-    onClick(href)
     Router.push(href)
   }, [])
   return (
@@ -95,20 +74,3 @@ const NaviItem = ({ href, current, onClick, children }) => {
     </BottomNaviItem>
   )
 }
-
-export default withRouter(({ children, router }) => {
-  const pathname = router.pathname
-  const [current, setCurrent] = useState(pathname)
-  return (
-    <Layout>
-      { children }
-      <Footer>
-        <BottomNavi>
-          <NaviItem href="/" current={current} onClick={setCurrent}>Recent</NaviItem>
-          <NaviItem href="/about" current={current} onClick={setCurrent}>Favorite</NaviItem>
-          <NaviItem href="/rooms" current={current} onClick={setCurrent}>Settings</NaviItem>
-        </BottomNavi>
-      </Footer>
-    </Layout>
-  )
-})

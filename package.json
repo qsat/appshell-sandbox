@@ -19,6 +19,7 @@
     "react-dom": "^16.8.3",
     "react-infinite-calendar": "^2.3.1",
     "react-redux": "^6.0.1",
+    "react-spring": "^8.0.18",
     "redux": "^4.0.1",
     "styled-components": "^4.1.3"
   },
